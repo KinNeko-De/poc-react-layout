@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tabs, Tab, Card, CardContent, Typography, List, ListItem, Stack } from '@mui/material';
-import { Link } from "react-router-dom";
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Item from '@mui/material/Unstable_Grid2'; // Import Item separately
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Documents: React.FC = () => {
-  const [selectedTab, setSelectedTab] = React.useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const query = new URLSearchParams(location.search);
+  const tab = query.get('tab');
+  const selectedTab = tab ? Number(tab) : 0;
+
+  useEffect(() => {
+    if (tab === null) {
+      query.set('tab', '0');
+      navigate(location.pathname + '?' + query.toString());
+    }
+  }); // Empty dependency array means this effect runs once on mount
 
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setSelectedTab(newValue);
+    query.set('tab', String(newValue));
+    navigate({ search: query.toString() });
   };
 
   return (
