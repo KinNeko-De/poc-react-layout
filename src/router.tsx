@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout/layout";
 import Documents from "./design/documents";
+import Advertise from "./advertise/advertise";
 
 const router = createBrowserRouter([
   {
@@ -14,13 +15,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/document/:documentId",
-        element: <h1>About</h1>,
+        element: <h1>Invoice</h1>,
       },
     ],
   },
   {
     path: "/notloggedin",
-    element: <h1>Cool information why you want this product. the final path will be /</h1>,
+    element: <Advertise />,
   }
 ]);
 
