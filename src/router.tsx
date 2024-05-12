@@ -6,6 +6,7 @@ import Advertise from "./advertise/advertise";
 
 const router = createBrowserRouter([
   {
+    id: "root",
     path: "/",
     element: <Layout />,
     children: [
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       {
         path: "/document/:documentId",
         element: <h1>Invoice</h1>,
+
       },
     ],
   },
