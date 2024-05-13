@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const todosSlice = createSlice({
   name: 'todos',
-  initialState: [],
+  initialState: ["Hello World!"],
   reducers: {
     todoAdded(state: any[], action) {
       state.push({
