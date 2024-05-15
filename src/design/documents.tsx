@@ -4,6 +4,9 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import Item from '@mui/material/Unstable_Grid2'; // Import Item separately
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { ToInvoice, ToMain } from '../features/title/titleSlice'
+
 const Documents: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,6 +26,9 @@ const Documents: React.FC = () => {
     navigate({ search: query.toString() });
   };
 
+  // const currecntTitle = useSelector((state: any) => state.title.value)
+  const dispatch = useDispatch()
+
   return (
     <div>
       <Tabs value={selectedTab} onChange={handleTabChange}>
@@ -37,7 +43,7 @@ const Documents: React.FC = () => {
             <ListItem>
               <Card>
                 <CardContent>
-                  <Typography variant="h5"><Link to="document/invoice">invoice</Link></Typography>
+                  <Typography variant="h5"><Link to="document/invoice" onClick={() => dispatch(ToInvoice())}>invoice</Link></Typography>
                   <Typography variant="body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typography>
                 </CardContent>
               </Card>

@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout/layout";
 import Documents from "./design/documents";
 import Advertise from "./advertise/advertise";
+import { TitleManager } from "./features/title/TitleManager";
 
 const router = createBrowserRouter([
   {
@@ -17,13 +18,16 @@ const router = createBrowserRouter([
       {
         path: "/document/:documentId",
         element: <h1>Invoice</h1>,
-
       },
     ],
   },
   {
     path: "/notloggedin",
     element: <Advertise />,
+  },
+  {
+    path: "/foiking-redux",
+    element: <TitleManager />,
   }
 ]);
 
