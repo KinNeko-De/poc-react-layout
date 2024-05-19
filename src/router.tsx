@@ -4,6 +4,7 @@ import Layout from "./layout/layout";
 import Documents from "./design/documents";
 import Advertise from "./advertise/advertise";
 import { TitleManager } from "./features/title/TitleManager";
+import Document from "./design/document";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/document/:documentId",
-        element: <h1>Invoice</h1>,
+        element: <Document revision={1} language={"kk"} description={"kk"} />,
       },
     ],
   },

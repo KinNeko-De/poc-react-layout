@@ -17,5 +17,12 @@
         "<node_internals>/**"
       ]
     },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug with Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
   ]
 }

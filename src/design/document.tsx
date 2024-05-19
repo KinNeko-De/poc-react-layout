@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
+import { useOutletContext } from 'react-router-dom';
 
 interface DocumentProps {
   revision: number;
@@ -8,6 +9,7 @@ interface DocumentProps {
 }
 
 const Document: React.FC<DocumentProps> = ({ revision, language, description }) => {
+  const title = useOutletContext<string>();
   return (
     <Box>
       <Typography variant="h6">Revision: {revision}</Typography>
