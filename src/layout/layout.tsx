@@ -35,8 +35,13 @@ export default function Layout() {
         <GlobalHeader />
       </header>
       <main>
-        <Outlet context={title} />
+        <Outlet context={[title, setTitle]} />
       </main>
     </>
   );
 };
+
+export function useTitle() {
+  const context = useOutletContext<[string, React.Dispatch<React.SetStateAction<string>>]>();
+  return context;
+}
