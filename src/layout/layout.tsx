@@ -9,9 +9,6 @@ type LayoutContext = {
 
 export default function Layout() {
   const [title, setTitle] = React.useState<string>('Initial title');
-
-
-
   // const [user, setUser] = React.useState<User | null>(null);
   /*
   const [context, setContext] = React.useState<Context>({
@@ -24,8 +21,7 @@ export default function Layout() {
   return (
     <>
       <header>
-        <h1>{title}</h1>
-        <GlobalHeader />
+        <GlobalHeader title={title} />
       </header>
       <main>
         <Outlet context={{ setTitle } satisfies LayoutContext} />
