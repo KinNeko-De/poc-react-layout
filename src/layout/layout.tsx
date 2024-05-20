@@ -1,23 +1,16 @@
 import React from 'react';
 import GlobalHeader from './globalheader';
 import { Outlet, useOutletContext } from 'react-router-dom';
-import { Console } from 'console';
 
-type Context = {
-  title: string
-  setTitle: (title: string) => void
-  user: User | null,
-  setUser: (user: User) => void
-};
-
-type User = {
-  displayName: string
-  email: string
+type LayoutContext = {
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
 };
 
 
 export default function Layout() {
   const [title, setTitle] = React.useState<string>('Initial title');
+
+
 
   // const [user, setUser] = React.useState<User | null>(null);
   /*
@@ -35,13 +28,13 @@ export default function Layout() {
         <GlobalHeader />
       </header>
       <main>
-        <Outlet context={[title, setTitle]} />
+        <Outlet context={{ setTitle } satisfies LayoutContext} />
       </main>
     </>
   );
 };
 
-export function useTitle() {
-  const context = useOutletContext<[string, React.Dispatch<React.SetStateAction<string>>]>();
+export function useLayoutContext() {
+  const context = useOutletContext<LayoutContext>();
   return context;
 }

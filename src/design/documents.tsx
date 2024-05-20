@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { ToInvoice, ToMain } from '../features/title/titleSlice'
+import { useLayoutContext } from '../layout/layout';
 
 const Documents: React.FC = () => {
   const location = useLocation();
@@ -13,6 +14,8 @@ const Documents: React.FC = () => {
   const query = new URLSearchParams(location.search);
   const tab = query.get('tab');
   const selectedTab = tab ? Number(tab) : 0;
+
+  const { setTitle } = useLayoutContext();
 
   useEffect(() => {
     if (tab === null) {
@@ -39,6 +42,7 @@ const Documents: React.FC = () => {
 
       <div>
         {selectedTab === 0 && (
+          setTitle('Documents'),
           <List>
             <ListItem>
               <Card>
@@ -76,6 +80,7 @@ const Documents: React.FC = () => {
         )}
 
         {selectedTab === 1 && (
+          setTitle('Something else'),
           <Grid container spacing={2}>
             <Grid xs={8}>
               <Item>xs=8</Item>
@@ -93,6 +98,7 @@ const Documents: React.FC = () => {
         )}
 
         {selectedTab === 2 && (
+          setTitle('More content'),
           <Stack spacing={2}>
             <Item>Item 1</Item>
             <Item>Item 2</Item>

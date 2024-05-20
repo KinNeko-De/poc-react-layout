@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Typography, Box } from '@mui/material';
 import { useOutletContext } from 'react-router-dom';
-import { useTitle } from '../layout/layout';
+import { useLayoutContext } from '../layout/layout';
 
 interface DocumentProps {
   revision: number;
@@ -10,10 +10,10 @@ interface DocumentProps {
 }
 
 const Document: React.FC<DocumentProps> = ({ revision, language, description }) => {
-  const [title, setTitle] = useTitle();
+  const { setTitle } = useLayoutContext();
 
   useEffect(() => {
-    setTitle('New title');
+    setTitle('Invoice');
   }, [setTitle]);
 
   return (
